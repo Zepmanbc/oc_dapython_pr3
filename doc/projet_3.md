@@ -95,6 +95,7 @@ donc pour résumer:
     * si position commune avec la sortie, afficher le message de victoire
 
 je vais utiliser le fichier floor-tiles-20x20.png pour faire le décor
+
 ![floor-tiles-20x20.png](floor-tiles-20x20.png)
 
 ma fenêtre fera donc 15 × 20 = 300 px de côtés
