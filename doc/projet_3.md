@@ -106,4 +106,15 @@ Je vais devoir utiliser la méthode [SpriteSheet](https://www.pygame.org/wiki/Sp
 
 ![etape1](etape1_window.png)
 
-je créé une classe map pour gerer le tableau et une class display qui va afficher les éléments de map.
+je créé une classe **Map** pour gerer le tableau. Elle lit le fichier *map* et permet de manipuler les éléments du tableau du même nom (cacher et déplacer des élements)
+
+![avec les items](items.png)
+
+le classe **Display** sert a afficher les éléments graphiques. Elle contient les constantes avec les images sélectionnées. Il y a 2 types de ressources, les images simples qu'il faut redimensionner et les sprites où il faut selectionner juste une partie d'une image plus grande.
+
+la classe **Angus** gère l'inventaire de MacGyver et le déplacement dans *map*
+
+Le programme principal fait une loop et surveille les appuis des touches pour déplacer MacGyver. Il y a des tests pour vérifier la récupération des objets et les règles du jeu
+
+![c'est gagné](win.png)
+![c'est perdu](loose.png)

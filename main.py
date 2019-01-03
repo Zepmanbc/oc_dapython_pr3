@@ -12,10 +12,11 @@ def main():
     map = Map()
     screen = Display(window, map.map)
 
-    # init items
-    macgyver = Angus(map.macgyver, map)
+    # create player objet
+    macgyver = Angus(map)
 
     loop = True
+    end_message = ""
     while loop:
         for event in pygame.event.get():
             if event.type == 12:  # pygame.QUIT:
@@ -24,29 +25,41 @@ def main():
                 if event.key == 113:  # Q
                     loop = False
                 if event.key == K_DOWN:
-                    macgyver.down()
+                    macgyver.move("DOWN")
                 if event.key == K_UP:
-                    macgyver.up()
+                    macgyver.move("UP")
                 if event.key == K_RIGHT:
-                    macgyver.right()
+                    macgyver.move("RIGHT")
                 if event.key == K_LEFT:
-                    macgyver.left()
+                    macgyver.move("LEFT")
 
-            # verification items position
+            # compare items' position to MacGyver's
             if macgyver.position == map.ether:
                 macgyver.ether = True
-                print("got ether!")
             if macgyver.position == map.needle:
                 macgyver.needle = True
-                print("got needle!")
             if macgyver.position == map.guardian:
+                # test if inventory is full
                 if not (macgyver.ether and macgyver.needle):
-                    print("loose")
+                    end_message = "LOOSE"
+                    loop = False
             if macgyver.position == map.exit:
-                print("win")
+                end_message = "WIN"
+                loop = False
 
-        screen.refresh_screen()
-        # pygame.display.flip()
+            screen.refresh_screen()
+
+            if end_message:
+                screen.stop(end_message)
+    if end_message:
+        loop = True
+        while loop:
+            for event in pygame.event.get():
+                if event.type == 12:  # pygame.QUIT:
+                    loop = False
+                if event.type == 2:
+                    if event.key == 113:  # Q
+                        loop = False
 
 if __name__ == "__main__":
     main()

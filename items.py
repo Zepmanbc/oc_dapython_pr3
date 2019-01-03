@@ -3,44 +3,30 @@
 
 
 class Angus():
-    def __init__(self, position, map):
+    MOVES = {
+        "UP": (0, -1),
+        "DOWN": (0, 1),
+        "LEFT": (-1, 0),
+        "RIGHT": (1, 0)
+    }
+
+    def __init__(self, map):
         self.map = map
-        self.position = position
+        self.position = self.map.macgyver
         self.tile = "M"
         self.ether = False
         self.needle = False
 
-    #     self.visible = True
-
-    # def hide(self):
-    #     self.visible = False
-    #     self.map.hide(self.position)
-
-    def up(self):
-        if self.map.is_move_possible(self.position, "UP"):
-            (x_coord, y_coord) = self.position
-            new_position = (x_coord, y_coord - 1)
-            self.map.move(self.tile, self.position, new_position)
-            self.position = new_position
-
-    def down(self):
-        if self.map.is_move_possible(self.position, "DOWN"):
-            (x_coord, y_coord) = self.position
-            new_position = (x_coord, y_coord + 1)
-            self.map.move(self.tile, self.position, new_position)
-            self.position = new_position
-
-    def left(self):
-        if self.map.is_move_possible(self.position, "LEFT"):
-            (x_coord, y_coord) = self.position
-            new_position = (x_coord - 1, y_coord)
-            self.map.move(self.tile, self.position, new_position)
-            self.position = new_position
-
-    def right(self):
-        if self.map.is_move_possible(self.position, "RIGHT"):
-            (x_coord, y_coord) = self.position
-            new_position = (x_coord + 1, y_coord)
+    def move(self, direction):
+        """
+        Try if the movement is possible
+        If so, caclculate the new position, set it and modify the map table
+        """
+        origin = self.position
+        change = self.MOVES[direction]
+        # addition of the 2 tuples
+        new_position = tuple([sum(x) for x in zip(*[origin, change])])
+        if self.map.is_move_possible(new_position):
             self.map.move(self.tile, self.position, new_position)
             self.position = new_position
 

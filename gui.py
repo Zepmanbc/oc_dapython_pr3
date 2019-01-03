@@ -14,15 +14,15 @@ class Display():
     GUARDIAN = "ressource/Gardien.png"
     NEEDLE = "ressource/seringue.png"
     ETHER = "ressource/ether.png"
+    WIN = "ressource/win.png"
+    LOOSE = "ressource/loose.png"
 
     def __init__(self, window, map):
         self.window = window
         self.init_pictures()
-        # self.refresh_screen(map)
         self.map = map
         self.refresh_screen()
 
-    # def refresh_screen(self, map):
     def refresh_screen(self):
         "Read the map and set every tile in the window"
         switcher = {
@@ -40,7 +40,7 @@ class Display():
             for tile in line:
                 # put a floor tile under every tile to use transparency tiles
                 self.window.blit(self.floor, (x_coord, y_coord))
-
+                # select the picture used for a tile
                 pic = switcher.get(tile)
                 if not pic:
                     raise Exception("'{}' is not a valid tile".format(tile))
@@ -48,6 +48,15 @@ class Display():
                 x_coord += self.STEP
             x_coord = 0
             y_coord += self.STEP
+        pygame.display.flip()
+
+    def stop(self, message):
+        if message == "WIN":
+            stop_pic = self.WIN
+        else:
+            stop_pic = self.LOOSE
+        pic = pygame.image.load(stop_pic)
+        self.window.blit(pic, (0, 0))
         pygame.display.flip()
 
     def init_pictures(self):

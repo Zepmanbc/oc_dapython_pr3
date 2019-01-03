@@ -18,11 +18,12 @@ class Map():
         self.needle = self.__random_position("N")
         self.ether = self.__random_position("E")
 
-    def __get_position(self, what):
+    def __get_position(self, ref_tile):
+        "Read each coordinates of self.map to get the tile coordinates"
         x_coord, y_coord = 0, 0
         for line in self.map:
             for tile in line:
-                if tile == what:
+                if tile == ref_tile:
                     return (x_coord, y_coord)
                 x_coord += 1
             x_coord = 0
@@ -30,51 +31,45 @@ class Map():
         return False
 
     def __set_position(self, tile, position):
+        "modify the tile at position in self.map"
         (x_coord, y_coord) = position
         row = list(self.map[y_coord])
         row[x_coord] = tile
         self.map[y_coord] = "".join(row)
 
     def __get_tile(self, position):
+        "return tile type at coordinates in self.map"
         (x_coord, y_coord) = position
         return self.map[y_coord][x_coord]
 
     def __random_position(self, tile):
+        "test a random position in self.map if it is floor"
         random_list = [x for x in range(0, 15)]
         while 1:
             position = (choice(random_list), choice(random_list))
             if self.__get_tile(position) == '_':
                 self.__set_position(tile, position)
                 return position
-                break
+                # break
 
-    def is_move_possible(self, position, direction):
-        (x_coord, y_coord) = position
-        # Get the direction
-        if direction == "UP":
-            y_coord -= 1
-        elif direction == "DOWN":
-            y_coord += 1
-        elif direction == "LEFT":
-            x_coord -= 1
-        elif direction == "RIGHT":
-            x_coord += 1
-        else:
-            msg = "'{}' is not a correct direction".format(direction)
-            raise(ValueError, msg)
+    def is_move_possible(self, new_position):
+        "Test if the move is ok"
+        (x_coord, y_coord) = new_position
         # Verify if not out of screen
         if not (0 <= x_coord <= 14 and 0 <= y_coord <= 14):
             return False
         # Get type of tile
-        if self.__get_tile((x_coord, y_coord)) == "#":
+        if self.__get_tile(new_position) == "#":
             return False
         # all seems to be good
         return True
 
     def hide(self, position):
+        "Set the position as a floor tile"
         self.__set_position("_", position)
 
     def move(self, tile, last_pos, new_pos):
+        "Hide previous position and set the tile to new position"
         self.hide(last_pos)
         self.__set_position(tile, new_pos)
 
