@@ -2,9 +2,14 @@
 # coding: utf-8
 import pygame
 
+from gui import Display
+from map import Map
+
 
 def main():
-    screen = pygame.display.set_mode((300, 300))
+    window = pygame.display.set_mode((300, 300))
+    map = Map()
+    screen = Display(window, map.map)
     loop = True
     while loop:
         for event in pygame.event.get():

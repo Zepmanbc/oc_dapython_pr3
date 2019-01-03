@@ -66,11 +66,11 @@ Ce tableau sera mis à jour en fonction des événements et permettra de rafraic
 
 je vais gérer MacGyver, le garde et les diférents éléments en tant qu'objets.
 
-* MacGyver : il aura une position, une liste d'objets possédé ou pas.
+* MacGyver : il aura une position, une liste d'objets possédés ou pas.
 
 * le Garde : il a une position et un status d'affichage.
 
-* les éléments à récupérer : ils ont une position qui doit être définie aléatoirement sur les cases de chemin, ils ont un status d'afficheage si ils ont été récupérés.
+* les éléments à récupérer : ils ont une position qui doit être définie aléatoirement sur les cases de chemin, ils ont un status d'affichage si ils ont été récupérés.
 
 * la sortie : elle a une position.
 
@@ -94,6 +94,8 @@ donc pour résumer:
     * si position commune avec le garde, vérification de l'inventaire, soit afficher un message perdu, soit faire disparaitre le garde
     * si position commune avec la sortie, afficher le message de victoire
 
+## Etape 1 : création de la fenêtre
+
 je vais utiliser le fichier floor-tiles-20x20.png pour faire le décor
 
 ![floor-tiles-20x20.png](floor-tiles-20x20.png)
@@ -102,4 +104,6 @@ ma fenêtre fera donc 15 × 20 = 300 px de côtés
 
 Je vais devoir utiliser la méthode [SpriteSheet](https://www.pygame.org/wiki/Spritesheet) pour utiliser cette ressource
 
-## Etape 1 : création de la fenêtre
+![etape1](etape1_window.png)
+
+je créé une classe map pour gerer le tableau et une class display qui va afficher les éléments de map.
