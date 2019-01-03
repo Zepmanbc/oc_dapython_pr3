@@ -18,9 +18,12 @@ class Display():
     def __init__(self, window, map):
         self.window = window
         self.init_pictures()
-        self.refresh_screen(map)
+        # self.refresh_screen(map)
+        self.map = map
+        self.refresh_screen()
 
-    def refresh_screen(self, map):
+    # def refresh_screen(self, map):
+    def refresh_screen(self):
         "Read the map and set every tile in the window"
         switcher = {
                 '#': self.wall,
@@ -32,7 +35,8 @@ class Display():
                 'E': self.ether
             }
         x_coord, y_coord = 0, 0
-        for line in map:
+        # for line in map:
+        for line in self.map:
             for tile in line:
                 # put a floor tile under every tile to use transparency tiles
                 self.window.blit(self.floor, (x_coord, y_coord))

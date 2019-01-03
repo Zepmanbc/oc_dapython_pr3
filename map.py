@@ -12,7 +12,7 @@ class Map():
         for line in f:
             self.map.append(line[:-1])
         # creation position for every items
-        self.macgiver = self.__get_position("M")
+        self.macgyver = self.__get_position("M")
         self.guardian = self.__get_position("G")
         self.exit = self.__get_position("S")
         self.needle = self.__random_position("N")
@@ -63,20 +63,30 @@ class Map():
             msg = "'{}' is not a correct direction".format(direction)
             raise(ValueError, msg)
         # Verify if not out of screen
-        if not 0 <= x_coord <= 14 and 0 <= y_coord <= 14:
+        if not (0 <= x_coord <= 14 and 0 <= y_coord <= 14):
             return False
         # Get type of tile
-        if __get_tile((x_coord, y_coord)) == "#":
+        if self.__get_tile((x_coord, y_coord)) == "#":
             return False
         # all seems to be good
         return True
 
+    def hide(self, position):
+        self.__set_position("_", position)
+
+    def move(self, tile, last_pos, new_pos):
+        self.hide(last_pos)
+        self.__set_position(tile, new_pos)
 
 if __name__ == "__main__":
     map = Map()
     print(map.map)
-    print(map.macgiver)
+    print(map.macgyver)
     print(map.guardian)
     print(map.exit)
     print(map.needle)
     print(map.ether)
+
+    map.move("M", (0, 2), (0, 1))
+    print(map.map)
+    print(map.macgyver)
