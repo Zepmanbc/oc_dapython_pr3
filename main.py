@@ -9,6 +9,7 @@ from items import Angus
 
 def main():
     window = pygame.display.set_mode((300, 300))
+    pygame.display.set_caption("MacGyver vs G")
     map = Map()
     screen = Display(window, map.map)
 
