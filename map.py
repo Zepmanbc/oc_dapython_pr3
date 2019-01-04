@@ -73,15 +73,15 @@ class Map():
         self.hide(last_pos)
         self.__set_position(tile, new_pos)
 
-if __name__ == "__main__":
-    map = Map()
-    print(map.map)
-    print(map.macgyver)
-    print(map.guardian)
-    print(map.exit)
-    print(map.needle)
-    print(map.ether)
+# if __name__ == "__main__":
+#     map = Map()
+#     print(map.map)
+#     print(map.macgyver)
+#     print(map.guardian)
+#     print(map.exit)
+#     print(map.needle)
+#     print(map.ether)
 
-    map.move("M", (0, 2), (0, 1))
-    print(map.map)
-    print(map.macgyver)
+#     map.move("M", (0, 2), (0, 1))
+#     print(map.map)
+#     print(map.macgyver)

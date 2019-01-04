@@ -77,13 +77,13 @@ class Display():
         return pygame.transform.scale(pic, (self.STEP, self.STEP))
 
 
-if __name__ == "__main__":
-    window = pygame.display.set_mode((300, 300))
-    from map import Map
-    map = Map()
-    screen = Display(window, map.map)
-    loop = True
-    while loop:
-        for event in pygame.event.get():
-            if event.type == 12:  # pygame.QUIT:
-                loop = False
+# if __name__ == "__main__":
+#     window = pygame.display.set_mode((300, 300))
+#     from map import Map
+#     map = Map()
+#     screen = Display(window, map.map)
+#     loop = True
+#     while loop:
+#         for event in pygame.event.get():
+#             if event.type == 12:  # pygame.QUIT:
+#                 loop = False

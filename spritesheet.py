@@ -37,25 +37,26 @@ class Spritesheet(object):
                 for x in range(image_count)]
         return self.images_at(tups, colorkey)
 
+# if __name__ == "__main__":
+#     STEP = 20
+#     TILES = "ressource/floor-tiles-20x20.png"
+#     FLOOR = (1 * STEP, 0 * STEP, STEP, STEP)
+#     WALL = (12 * STEP, 5 * STEP, STEP, STEP)
+#     EXIT = (8 * STEP, 1 * STEP, STEP, STEP)
 
-def main():
-    STEP = 20
-    TILES = "ressource/floor-tiles-20x20.png"
-    FLOOR = (1 * STEP, 0 * STEP, STEP, STEP)
-    WALL = (12 * STEP, 5 * STEP, STEP, STEP)
-    EXIT = (8 * STEP, 1 * STEP, STEP, STEP)
+#     screen = pygame.display.set_mode((300, 300))
+#     loop = True
+#     while loop:
+#         for event in pygame.event.get():
+#             if event.type == 12:  # pygame.QUIT:
+#                 loop = False
+#         ss = Spritesheet("ressource/floor-tiles-20x20.png")
+#         # image = ss.image_at((0, 0, 20, 20))
+#         image = ss.image_at(EXIT)
+#         screen.blit(image, (0, 0))
 
-    screen = pygame.display.set_mode((300, 300))
-    loop = True
-    while loop:
-        for event in pygame.event.get():
-            if event.type == 12:  # pygame.QUIT:
-                loop = False
-        ss = Spritesheet("ressource/floor-tiles-20x20.png")
-        # image = ss.image_at((0, 0, 20, 20))
-        image = ss.image_at(EXIT)
-        screen.blit(image, (0, 0))
-        pygame.display.flip()
+#         img_list = ss.load_strip((0, 0, STEP, STEP), 8)
+#         screen.blit(img_list[2], (50, 0))
+#         screen.blit(img_list[6], (55, 15))
 
-if __name__ == "__main__":
-    main()
+#         pygame.display.flip()

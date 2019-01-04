@@ -51,6 +51,7 @@ def main():
 
             if end_message:
                 screen.stop(end_message)
+
     if end_message:
         loop = True
         while loop:
