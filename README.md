@@ -1,3 +1,6 @@
+[![Average time to resolve an issue](http://isitmaintained.com/badge/resolution/Zepmanbc/oc_dapython_pr3.svg)](http://isitmaintained.com/project/Zepmanbc/oc_dapython_pr3 "Average time to resolve an issue")
+[![Percentage of issues still open](http://isitmaintained.com/badge/open/Zepmanbc/oc_dapython_pr3.svg)](http://isitmaintained.com/project/Zepmanbc/oc_dapython_pr3 "Percentage of issues still open")
+
 # OpenClassrooms - Python - Project 3
 This is the 3rd project from https://openclassrooms.com/fr/paths/68-developpeur-dapplication-python
 
@@ -11,7 +14,7 @@ if you want to try:
 
 ## Installation
 
-    git clone git@github.com:Zepmanbc/oc_dapython_pr3.git
+    git clone https://github.com/Zepmanbc/oc_dapython_pr3.git
 
     cd oc_dapython_pr3
 
