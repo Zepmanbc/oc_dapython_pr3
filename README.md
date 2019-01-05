@@ -1,3 +1,5 @@
+[![Build Status](https://www.travis-ci.org/Zepmanbc/oc_dapython_pr3.svg?branch=master)](https://www.travis-ci.org/Zepmanbc/oc_dapython_pr3)
+[![Coverage Status](https://coveralls.io/repos/github/Zepmanbc/oc_dapython_pr3/badge.svg?branch=master)](https://coveralls.io/github/Zepmanbc/oc_dapython_pr3?branch=master)
 [![Average time to resolve an issue](http://isitmaintained.com/badge/resolution/Zepmanbc/oc_dapython_pr3.svg)](http://isitmaintained.com/project/Zepmanbc/oc_dapython_pr3 "Average time to resolve an issue")
 [![Percentage of issues still open](http://isitmaintained.com/badge/open/Zepmanbc/oc_dapython_pr3.svg)](http://isitmaintained.com/project/Zepmanbc/oc_dapython_pr3 "Percentage of issues still open")
 
