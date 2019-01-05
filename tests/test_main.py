@@ -3,7 +3,7 @@
 import pytest
 import threading
 
-from pynput.keyboard import Key, Controller
+# from pynput.keyboard import Key, Controller
 
 import main
 
@@ -11,15 +11,16 @@ import main
 class Test_main():
 
     def setup(self):
-        self.keyboard = Controller()
+        # self.keyboard = Controller()
+        pass
 
     def teardown(self):
         pass
 
-    def test_main(self):
-        # threading.Thread(main.main()).start()
-        threading.Thread(self.press_Q())
+    # def test_main(self):
+    #     threading.Thread(main.main()).start()
+    #     threading.Thread(self.press_Q())
 
-    def press_Q(self):
-        self.keyboard.press('q')
-        self.keyboard.release('q')
+    # def press_Q(self):
+    #     self.keyboard.press('q')
+    #     self.keyboard.release('q')
