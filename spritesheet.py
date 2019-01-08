@@ -1,15 +1,20 @@
-# This class handles sprite sheets
-# This was taken from www.scriptefun.com/transcript-2-using
-# sprite-sheets-and-drawing-the-background
-# I've added some code to fail if the file wasn't found..
-# Note: When calling images_at the rect is the format:
-# (x, y, x + offset, y + offset)
+"""This class handles sprite sheets.
+
+This was taken from www.scriptefun.com/transcript-2-using
+sprite-sheets-and-drawing-the-background
+I've added some code to fail if the file wasn't found..
+Note: When calling images_at the rect is the format:
+(x, y, x + offset, y + offset)
+"""
 
 import pygame
 
 
 class Spritesheet(object):
+    """Class the create sprites from a sprite sheet."""
+
     def __init__(self, filename):
+        """Get the sprite sheet file."""
         try:
             self.sheet = pygame.image.load(filename).convert()
         except TypeError:
@@ -17,7 +22,7 @@ class Spritesheet(object):
             raise message
 
     def image_at(self, rectangle, colorkey=None):
-        "Loads image from x,y,x+offset,y+offset"
+        """Load image from x,y,x+offset,y+offset."""
         rect = pygame.Rect(rectangle)
         image = pygame.Surface(rect.size).convert()
         image.blit(self.sheet, (0, 0), rect)
@@ -28,11 +33,11 @@ class Spritesheet(object):
         return image
 
     def images_at(self, rects, colorkey=None):
-        "Loads multiple images, supply a list of coordinates"
+        """Load multiple images, supply a list of coordinates."""
         return [self.image_at(rect, colorkey) for rect in rects]
 
     def load_strip(self, rect, image_count, colorkey=None):
-        "Loads a strip of images and returns them as a list"
+        """Load a strip of images and returns them as a list."""
         tups = [(rect[0]+rect[2]*x, rect[1], rect[2], rect[3])
                 for x in range(image_count)]
         return self.images_at(tups, colorkey)

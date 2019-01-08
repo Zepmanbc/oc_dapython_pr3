@@ -1,3 +1,4 @@
+"""Class that generate the map and get the position of each items."""
 #! /usr/bin/env python3
 # coding: utf-8
 import os
@@ -5,8 +6,11 @@ from random import choice
 
 
 class Map():
+    """Generate the map object."""
+
     def __init__(self):
-        # Read map file
+        """Init the map object."""
+        # Read the map file
         self.map = list()
         f = open("map", "r")
         for line in f:
@@ -19,7 +23,7 @@ class Map():
         self.ether = self.__random_position("E")
 
     def __get_position(self, ref_tile):
-        "Read each coordinates of self.map to get the tile coordinates"
+        """Read each coordinates of self.map to get the tile coordinates."""
         x_coord, y_coord = 0, 0
         for line in self.map:
             for tile in line:
@@ -31,19 +35,19 @@ class Map():
         return False
 
     def __set_position(self, tile, position):
-        "modify the tile at position in self.map"
+        """Modify the tile at position in self.map."""
         (x_coord, y_coord) = position
         row = list(self.map[y_coord])
         row[x_coord] = tile
         self.map[y_coord] = "".join(row)
 
     def __get_tile(self, position):
-        "return tile type at coordinates in self.map"
+        """Return tile type at coordinates in self.map."""
         (x_coord, y_coord) = position
         return self.map[y_coord][x_coord]
 
     def __random_position(self, tile):
-        "test a random position in self.map if it is floor"
+        """Test a random position in self.map if it is floor."""
         random_list = [x for x in range(0, 15)]
         while 1:
             position = (choice(random_list), choice(random_list))
@@ -53,7 +57,7 @@ class Map():
                 # break
 
     def is_move_possible(self, new_position):
-        "Test if the move is ok"
+        """Test if the move is ok."""
         (x_coord, y_coord) = new_position
         # Verify if not out of screen
         if not (0 <= x_coord <= 14 and 0 <= y_coord <= 14):
@@ -65,11 +69,11 @@ class Map():
         return True
 
     def hide(self, position):
-        "Set the position as a floor tile"
+        """Set the position as a floor tile."""
         self.__set_position("_", position)
 
     def move(self, tile, last_pos, new_pos):
-        "Hide previous position and set the tile to new position"
+        """Hide previous position and set the tile to new position."""
         self.hide(last_pos)
         self.__set_position(tile, new_pos)
 

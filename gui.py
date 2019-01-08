@@ -1,3 +1,5 @@
+"""Display class of the MacGyver Maze."""
+
 #! /usr/bin/env python3
 # coding: utf-8
 import pygame
@@ -5,6 +7,19 @@ from spritesheet import Spritesheet
 
 
 class Display():
+    """This module display the GUI.
+
+    It generate the positions and refresh on the screen
+
+    Exemple:
+        screen = Display(window, map)
+
+    Attributes:
+        window is a pygame.display object
+        map is an object that contains a list of the maze map and the position of items
+
+    """
+
     STEP = 20
     TILES = "ressource/floor-tiles-20x20.png"
     FLOOR = (1 * STEP, 0 * STEP, STEP, STEP)
@@ -18,22 +33,23 @@ class Display():
     LOOSE = "ressource/loose.png"
 
     def __init__(self, window, map):
+        """Set the variables and run the first refresh."""
         self.window = window
         self.init_pictures()
         self.map = map
         self.refresh_screen()
 
     def refresh_screen(self):
-        "Read the map and set every tile in the window"
+        """Read the map and set every tile in the window."""
         switcher = {
-                '#': self.wall,
-                '_': self.floor,
-                'S': self.exit,
-                'M': self.macgyver,
-                'G': self.guardian,
-                'N': self.needle,
-                'E': self.ether
-            }
+            '#': self.wall,
+            '_': self.floor,
+            'S': self.exit,
+            'M': self.macgyver,
+            'G': self.guardian,
+            'N': self.needle,
+            'E': self.ether
+        }
         x_coord, y_coord = 0, 0
         # for line in map:
         for line in self.map:
@@ -51,6 +67,7 @@ class Display():
         pygame.display.flip()
 
     def stop(self, message):
+        """Display final message."""
         if message == "WIN":
             stop_pic = self.WIN
         else:
@@ -60,7 +77,7 @@ class Display():
         pygame.display.flip()
 
     def init_pictures(self):
-        "Set every picture to the right area or size"
+        """Set every picture to the right area or size."""
         ss = Spritesheet(self.TILES)
         self.wall = ss.image_at(self.WALL)
         self.floor = ss.image_at(self.FLOOR)
@@ -71,7 +88,7 @@ class Display():
         self.ether = self.__resize_pic(self.ETHER)
 
     def __resize_pic(self, path):
-        "resize a picture to the tile size"
+        """Resize a picture to the tile size."""
         pic = pygame.image.load(path)
         pic.set_alpha(128)  # for keeping transparency
         return pygame.transform.scale(pic, (self.STEP, self.STEP))

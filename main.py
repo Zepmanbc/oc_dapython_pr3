@@ -1,5 +1,8 @@
 #! /usr/bin/env python3
 # coding: utf-8
+
+"""Main file of the MacGyver game."""
+
 import pygame
 from pygame.locals import K_UP, K_DOWN, K_LEFT, K_RIGHT
 from gui import Display
@@ -8,6 +11,7 @@ from items import Angus
 
 
 def main():
+    """Run the main part."""
     window = pygame.display.set_mode((300, 300))
     pygame.display.set_caption("MacGyver vs G")
     map = Map()

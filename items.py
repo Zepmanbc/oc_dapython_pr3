@@ -1,8 +1,12 @@
+"""Angus class contains the MacGyver's position and inventory."""
+
 #! /usr/bin/env python3
 # coding: utf-8
 
 
-class Angus():
+class Angus(): 
+    """Get MacGyver's position from the map object and set the invetory."""
+
     MOVES = {
         "UP": (0, -1),
         "DOWN": (0, 1),
@@ -11,6 +15,7 @@ class Angus():
     }
 
     def __init__(self, map):
+        """Set variables of position and inventory."""
         self.map = map
         self.position = self.map.macgyver
         self.tile = "M"
@@ -18,9 +23,10 @@ class Angus():
         self.needle = False
 
     def move(self, direction):
-        """
-        Try if the movement is possible
-        If so, caclculate the new position, set it and modify the map table
+        """Try if the movement is possible.
+
+        If so, caclculate the new position, 
+        set it and modify the map table.
         """
         origin = self.position
         change = self.MOVES[direction]
