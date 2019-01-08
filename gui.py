@@ -77,17 +77,17 @@ class Display():
         pygame.display.flip()
 
     def init_pictures(self):
-        """Set every picture to the right area or size."""
+        """Load every picture in a variable."""
         ss = Spritesheet(self.TILES)
         self.wall = ss.image_at(self.WALL)
         self.floor = ss.image_at(self.FLOOR)
         self.exit = ss.image_at(self.EXIT)
-        self.macgyver = self.__resize_pic(self.MACGYVER)
-        self.guardian = self.__resize_pic(self.GUARDIAN)
-        self.needle = self.__resize_pic(self.NEEDLE)
-        self.ether = self.__resize_pic(self.ETHER)
+        self.macgyver = self._resize_pic(self.MACGYVER)
+        self.guardian = self._resize_pic(self.GUARDIAN)
+        self.needle = self._resize_pic(self.NEEDLE)
+        self.ether = self._resize_pic(self.ETHER)
 
-    def __resize_pic(self, path):
+    def _resize_pic(self, path):
         """Resize a picture to the tile size."""
         pic = pygame.image.load(path)
         pic.set_alpha(128)  # for keeping transparency
