@@ -84,7 +84,15 @@ class Map():
                 # break
 
     def is_move_possible(self, new_position):
-        """Test if the move is ok."""
+        """Test if the move is ok.
+        
+        Args:
+            new_position (tuple): (x, y) coordinates
+
+        Returns:
+            boolean
+            
+        """
         (x_coord, y_coord) = new_position
         # Verify if not out of screen
         if not (0 <= x_coord <= 14 and 0 <= y_coord <= 14):
@@ -96,11 +104,21 @@ class Map():
         return True
 
     def hide(self, position):
-        """Set the position as a floor tile."""
+        """Set the position as a floor tile.
+        
+        Args:
+            position (tuple): (x, y) coordinates
+        """
         self._set_position("_", position)
 
     def move(self, tile, last_pos, new_pos):
-        """Hide previous position and set the tile to new position."""
+        """Hide previous position and set the tile to new position.
+        
+        Args:
+            tile (str): a letter that define the kind of sprite
+            las_pos (tuple): (x, y) coordinates (current)
+            new_pos (tuple): (x, y) coordinates (next)
+        """
         self.hide(last_pos)
         self._set_position(tile, new_pos)
         if tile == "M":
