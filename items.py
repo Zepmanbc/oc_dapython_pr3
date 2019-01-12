@@ -24,8 +24,8 @@ class Angus():
     def move(self, direction):
         """Try if the movement is possible.
 
-        If so, caclculate the new position,
-        set it and modify the map table.
+        Args:
+            direction (str): name the direction ["UP, "DOWN", "LEFT", "RIGHT"]
         """
         # self.map = map
         origin = self.map.macgyver
