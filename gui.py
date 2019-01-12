@@ -37,7 +37,9 @@ class Display():
         self.window = window
         self.init_pictures()
         self.map = map
+        self.message = False
         self.refresh_screen()
+        
 
     def refresh_screen(self):
         """Read the map and set every tile in the window."""
@@ -64,6 +66,8 @@ class Display():
                 x_coord += self.STEP
             x_coord = 0
             y_coord += self.STEP
+        if self.message:
+            self.display_message()
         pygame.display.flip()
 
     def stop(self, message):
@@ -75,6 +79,15 @@ class Display():
         pic = pygame.image.load(stop_pic)
         self.window.blit(pic, (0, 0))
         pygame.display.flip()
+    
+    def display_message(self):
+
+        if self.message == "WIN":
+            message_pic = self.WIN
+        else:
+            message_pic = self.LOOSE
+        pic = pygame.image.load(message_pic)
+        self.window.blit(pic, (0, 0))
 
     def init_pictures(self):
         """Load every picture in a variable."""

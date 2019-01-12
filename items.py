@@ -4,7 +4,7 @@
 # coding: utf-8
 
 
-class Angus(): 
+class Angus():
     """Get MacGyver's position from the map object and set the invetory."""
 
     MOVES = {
@@ -25,7 +25,7 @@ class Angus():
     def move(self, direction):
         """Try if the movement is possible.
 
-        If so, caclculate the new position, 
+        If so, caclculate the new position,
         set it and modify the map table.
         """
         origin = self.position

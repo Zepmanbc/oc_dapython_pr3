@@ -5,8 +5,9 @@
 
 import pygame
 from pygame.locals import K_UP, K_DOWN, K_LEFT, K_RIGHT
-from gui import Display
+
 from map import Map
+from gui import Display
 from items import Angus
 
 
@@ -21,7 +22,7 @@ def main():
     macgyver = Angus(map)
 
     loop = True
-    end_message = ""
+    play = True
     while loop:
         for event in pygame.event.get():
             if event.type == 12:  # pygame.QUIT:
@@ -29,14 +30,15 @@ def main():
             if event.type == 2:
                 if event.key == 113:  # Q
                     loop = False
-                if event.key == K_DOWN:
-                    macgyver.move("DOWN")
-                if event.key == K_UP:
-                    macgyver.move("UP")
-                if event.key == K_RIGHT:
-                    macgyver.move("RIGHT")
-                if event.key == K_LEFT:
-                    macgyver.move("LEFT")
+                if play:
+                    if event.key == K_DOWN:
+                        macgyver.move("DOWN")
+                    if event.key == K_UP:
+                        macgyver.move("UP")
+                    if event.key == K_RIGHT:
+                        macgyver.move("RIGHT")
+                    if event.key == K_LEFT:
+                        macgyver.move("LEFT")
 
             # compare items' position to MacGyver's
             if macgyver.position == map.ether:
@@ -46,26 +48,13 @@ def main():
             if macgyver.position == map.guardian:
                 # test if inventory is full
                 if not (macgyver.ether and macgyver.needle):
-                    end_message = "LOOSE"
-                    loop = False
+                    screen.message = "LOOSE"
+                    play = False
             if macgyver.position == map.exit:
-                end_message = "WIN"
-                loop = False
+                screen.message = "WIN"
+                play = False
 
-            screen.refresh_screen()
-
-            if end_message:
-                screen.stop(end_message)
-
-    if end_message:
-        loop = True
-        while loop:
-            for event in pygame.event.get():
-                if event.type == 12:  # pygame.QUIT:
-                    loop = False
-                if event.type == 2:
-                    if event.key == 113:  # Q
-                        loop = False
+        screen.refresh_screen()
 
 if __name__ == "__main__":
     main()
