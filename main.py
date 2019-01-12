@@ -15,14 +15,15 @@ def main():
     """Run the main part."""
     window = pygame.display.set_mode((300, 300))
     pygame.display.set_caption("MacGyver vs G")
+    pygame.time.Clock().tick(30)
     map = Map()
     screen = Display(window, map.map)
 
     # create player objet
     macgyver = Angus(map)
 
-    loop = True
-    play = True
+    loop = True  # main loop
+    play = True  # allow moves
     while loop:
         for event in pygame.event.get():
             if event.type == 12:  # pygame.QUIT:
@@ -31,6 +32,7 @@ def main():
                 if event.key == 113:  # Q
                     loop = False
                 if play:
+                    screen.message = False
                     if event.key == K_DOWN:
                         macgyver.move("DOWN")
                     if event.key == K_UP:
@@ -41,16 +43,16 @@ def main():
                         macgyver.move("LEFT")
 
             # compare items' position to MacGyver's
-            if macgyver.position == map.ether:
+            if map.macgyver == map.ether:
                 macgyver.ether = True
-            if macgyver.position == map.needle:
+            if map.macgyver == map.needle:
                 macgyver.needle = True
-            if macgyver.position == map.guardian:
+            if map.macgyver == map.guardian:
                 # test if inventory is full
                 if not (macgyver.ether and macgyver.needle):
                     screen.message = "LOOSE"
                     play = False
-            if macgyver.position == map.exit:
+            if map.macgyver == map.exit:
                 screen.message = "WIN"
                 play = False
 

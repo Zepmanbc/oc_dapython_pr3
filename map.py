@@ -64,7 +64,7 @@ class Map():
         return self.map[y_coord][x_coord]
 
     def _random_position(self, tile):
-        """Return a free (aka floor) random position in self.map.
+        """Return a free (floor) random position in self.map.
         
         Set the item letter in map
         
@@ -103,6 +103,8 @@ class Map():
         """Hide previous position and set the tile to new position."""
         self.hide(last_pos)
         self._set_position(tile, new_pos)
+        if tile == "M":
+            self.macgyver = new_pos
 
 # if __name__ == "__main__":
 #     map = Map()

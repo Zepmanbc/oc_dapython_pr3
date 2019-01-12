@@ -21,7 +21,7 @@ class Test_angus():
     def test_init(self):
         """Test initial position."""
         self.macgyver = Angus(self.map)
-        assert self.macgyver.position == (0, 2)
+        assert self.map.macgyver == (0, 2)
 
     def test_move(self):
         """Test the position after some moves.
@@ -39,4 +39,4 @@ class Test_angus():
         self.macgyver.move("UP")
         self.macgyver.move("UP")
         self.macgyver.move("RIGHT")
-        assert self.macgyver.position == (1, 0)
+        assert self.map.macgyver == (1, 0)

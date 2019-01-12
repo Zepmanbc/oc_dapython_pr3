@@ -25,10 +25,10 @@ class Test_gui():
         window = pygame.display.set_mode((300, 300))
         map = Map()
         screen = Display(window, map.map)
-        screen.stop("WIN")
+        screen.message = "WIN"
 
     def test_stop_loose(self):
         window = pygame.display.set_mode((300, 300))
         map = Map()
         screen = Display(window, map.map)
-        screen.stop("LOOSE")
+        screen.message = "LOOSE"

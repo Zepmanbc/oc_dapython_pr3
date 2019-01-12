@@ -31,13 +31,14 @@ class Display():
     ETHER = "ressource/ether.png"
     WIN = "ressource/win.png"
     LOOSE = "ressource/loose.png"
+    GO = "ressource/go.png"
 
     def __init__(self, window, map):
         """Set the variables and run the first refresh."""
         self.window = window
-        self.init_pictures()
+        self._init_pictures()
         self.map = map
-        self.message = False
+        self.message = "GO"
         self.refresh_screen()
         
 
@@ -67,29 +68,24 @@ class Display():
             x_coord = 0
             y_coord += self.STEP
         if self.message:
-            self.display_message()
-        pygame.display.flip()
-
-    def stop(self, message):
-        """Display final message."""
-        if message == "WIN":
-            stop_pic = self.WIN
-        else:
-            stop_pic = self.LOOSE
-        pic = pygame.image.load(stop_pic)
-        self.window.blit(pic, (0, 0))
+            self._display_message()
         pygame.display.flip()
     
-    def display_message(self):
+    def _display_message(self):
+        """Display an image on the screen.
 
+        if self.message is not False set the image corresponding to value
+        """
         if self.message == "WIN":
             message_pic = self.WIN
-        else:
+        elif self.message == "LOOSE":
             message_pic = self.LOOSE
+        elif self.message == "GO":
+            message_pic = self.GO
         pic = pygame.image.load(message_pic)
         self.window.blit(pic, (0, 0))
 
-    def init_pictures(self):
+    def _init_pictures(self):
         """Load every picture in a variable."""
         ss = Spritesheet(self.TILES)
         self.wall = ss.image_at(self.WALL)
@@ -107,13 +103,13 @@ class Display():
         return pygame.transform.scale(pic, (self.STEP, self.STEP))
 
 
-# if __name__ == "__main__":
-#     window = pygame.display.set_mode((300, 300))
-#     from map import Map
-#     map = Map()
-#     screen = Display(window, map.map)
-#     loop = True
-#     while loop:
-#         for event in pygame.event.get():
-#             if event.type == 12:  # pygame.QUIT:
-#                 loop = False
+if __name__ == "__main__":
+    window = pygame.display.set_mode((300, 300))
+    from map import Map
+    map = Map()
+    screen = Display(window, map.map)
+    loop = True
+    while loop:
+        for event in pygame.event.get():
+            if event.type == 12:  # pygame.QUIT:
+                loop = False
