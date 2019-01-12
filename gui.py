@@ -31,14 +31,14 @@ class Display():
     ETHER = "ressource/ether.png"
     WIN = "ressource/win.png"
     LOOSE = "ressource/loose.png"
-    GO = "ressource/go.png"
+    INSTRUCTIONS = "ressource/instructions.png"
 
     def __init__(self, window, map):
         """Set the variables and run the first refresh."""
         self.window = window
         self._init_pictures()
         self.map = map
-        self.message = "GO"
+        self.message = "INSTRUCTIONS"
         self.refresh_screen()
         
 
@@ -80,8 +80,8 @@ class Display():
             message_pic = self.WIN
         elif self.message == "LOOSE":
             message_pic = self.LOOSE
-        elif self.message == "GO":
-            message_pic = self.GO
+        elif self.message == "INSTRUCTIONS":
+            message_pic = self.INSTRUCTIONS
         pic = pygame.image.load(message_pic)
         self.window.blit(pic, (0, 0))
 
@@ -103,13 +103,13 @@ class Display():
         return pygame.transform.scale(pic, (self.STEP, self.STEP))
 
 
-if __name__ == "__main__":
-    window = pygame.display.set_mode((300, 300))
-    from map import Map
-    map = Map()
-    screen = Display(window, map.map)
-    loop = True
-    while loop:
-        for event in pygame.event.get():
-            if event.type == 12:  # pygame.QUIT:
-                loop = False
+# if __name__ == "__main__":
+#     window = pygame.display.set_mode((300, 300))
+#     from map import Map
+#     map = Map()
+#     screen = Display(window, map.map)
+#     loop = True
+#     while loop:
+#         for event in pygame.event.get():
+#             if event.type == 12:  # pygame.QUIT:
+#                 loop = False
