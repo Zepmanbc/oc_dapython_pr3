@@ -23,6 +23,7 @@ class Map:
         self.exit = self._get_position("S")
         self.needle = self._random_position("N")
         self.ether = self._random_position("E")
+        self.tube = self._random_position("T")
 
     def _get_position(self, ref_tile):
         """Read each coordinates of self.map to get the tile coordinates.

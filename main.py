@@ -47,9 +47,11 @@ def main():
                 macgyver.ether = True
             if map.macgyver == map.needle:
                 macgyver.needle = True
+            if map.macgyver == map.tube:
+                macgyver.tube = True
             if map.macgyver == map.guardian:
                 # test if inventory is full
-                if not (macgyver.ether and macgyver.needle):
+                if not macgyver.is_inventory_full():
                     screen.message = "LOOSE"
                     play = False
             if map.macgyver == map.exit:

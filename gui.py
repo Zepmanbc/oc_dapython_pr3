@@ -31,6 +31,7 @@ class Display:
     GUARDIAN = os.path.join("ressource", "Gardien.png")
     NEEDLE = os.path.join("ressource", "seringue.png")
     ETHER = os.path.join("ressource", "ether.png")
+    TUBE = os.path.join("ressource", "tube_plastique.png")
     WIN = os.path.join("ressource", "win.png")
     LOOSE = os.path.join("ressource", "loose.png")
     INSTRUCTIONS = os.path.join("ressource", "instructions.png")
@@ -53,7 +54,8 @@ class Display:
             'M': self.macgyver,
             'G': self.guardian,
             'N': self.needle,
-            'E': self.ether
+            'E': self.ether,
+            'T': self.tube
         }
         x_coord, y_coord = 0, 0
         # for line in map:
@@ -97,6 +99,7 @@ class Display:
         self.guardian = self._resize_pic(self.GUARDIAN)
         self.needle = self._resize_pic(self.NEEDLE)
         self.ether = self._resize_pic(self.ETHER)
+        self.tube = self._resize_pic(self.TUBE)
 
     def _resize_pic(self, path):
         """Resize a picture to the tile size."""

@@ -19,6 +19,7 @@ class Angus:
         self.tile = "M"
         self.ether = False
         self.needle = False
+        self.tube = False
 
     def move(self, direction):
         """Try if the movement is possible.
@@ -34,6 +35,12 @@ class Angus:
         if self.map.is_move_possible(new_position):
             self.map.move(self.tile, self.map.macgyver, new_position)
 
+    def is_inventory_full(self):
+        """Return True if MacGyver have all items."""
+        if (self.ether and self.needle and self.tube):
+            return True
+        else:
+            return False
 
 if __name__ == "__main__":
     pass
