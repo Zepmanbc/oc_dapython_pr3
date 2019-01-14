@@ -36,17 +36,17 @@ class Display:
     LOOSE = os.path.join("ressource", "loose.png")
     INSTRUCTIONS = os.path.join("ressource", "instructions.png")
 
-    def __init__(self, window, map):
+    def __init__(self, window, mappy):
         """Set the variables and run the first refresh."""
         self.window = window
         self._init_pictures()
-        self.map = map
+        self.mappy = mappy
         self.message = "INSTRUCTIONS"
         self.refresh_screen()
         
 
     def refresh_screen(self):
-        """Read the map and set every tile in the window."""
+        """Read the mappy and set every tile in the window."""
         switcher = {
             '#': self.wall,
             '_': self.floor,
@@ -58,8 +58,8 @@ class Display:
             'T': self.tube
         }
         x_coord, y_coord = 0, 0
-        # for line in map:
-        for line in self.map:
+        # for line in mappy:
+        for line in self.mappy:
             for tile in line:
                 # put a floor tile under every tile to use transparency tiles
                 self.window.blit(self.floor, (x_coord, y_coord))
