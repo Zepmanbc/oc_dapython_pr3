@@ -40,6 +40,6 @@ Use arrow keys to move MacGyver
 
 Press Q to quit anytime
 
-You must take the 2 items before going to the guardian and exit
+You must take the 3 items before going to the guardian and exit
 
 Enjoy...

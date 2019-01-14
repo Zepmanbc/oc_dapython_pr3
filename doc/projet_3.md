@@ -106,7 +106,7 @@ Je vais devoir utiliser la méthode [SpriteSheet](https://www.pygame.org/wiki/Sp
 
 ![etape1](etape1_window.png)
 
-je créé une classe **Map** pour gerer le tableau. Elle lit le fichier *map* et permet de manipuler les éléments du tableau du même nom (cacher et déplacer des élements)
+je créé une classe **Mappy** pour gerer le tableau. Elle lit le fichier *map* et permet de manipuler les éléments du tableau du même nom (cacher et déplacer des élements)
 
 ![avec les items](items.png)
 
