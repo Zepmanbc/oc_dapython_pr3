@@ -94,8 +94,6 @@ donc pour résumer:
     * si position commune avec le garde, vérification de l'inventaire, soit afficher un message perdu, soit faire disparaitre le garde
     * si position commune avec la sortie, afficher le message de victoire
 
-## Etape 1 : création de la fenêtre
-
 je vais utiliser le fichier floor-tiles-20x20.png pour faire le décor
 
 ![floor-tiles-20x20.png](floor-tiles-20x20.png)
