@@ -40,3 +40,23 @@ class Test_angus():
         self.macgyver.move("UP")
         self.macgyver.move("RIGHT")
         assert self.mappy.macgyver == (1, 0)
+
+    def test_is_inventory_full_false(self):
+        """All 3 items are False."""
+        self.macgyver = Angus(self.mappy)
+        assert self.macgyver.is_inventory_full() == False
+
+    def test_is_inventory_full_false2(self):
+        """1/3 items is True."""
+        self.macgyver = Angus(self.mappy)
+        self.macgyver.ether = True
+        assert self.macgyver.is_inventory_full() == False
+
+    def test_is_inventory_full_true(self):
+        """All items are True."""
+        self.macgyver = Angus(self.mappy)
+        self.macgyver.ether = True
+        self.macgyver.needle = True
+        self.macgyver.tube = True
+        assert self.macgyver.is_inventory_full() == True
+
