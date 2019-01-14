@@ -2,7 +2,7 @@
 # coding: utf-8
 import pytest
 
-from map import Map
+from mappy import Mappy
 
 
 class Test_map():
@@ -14,27 +14,27 @@ class Test_map():
     Wall: (1, 2)
     """
     def setup(self):
-        self.map = Map()
+        self.mappy = Mappy()
 
     def teardown(self):
         pass
 
     def test_position_macgyver(self):
-        assert self.map.macgyver == (0, 2)
+        assert self.mappy.macgyver == (0, 2)
 
     def test_is_move_possible_false(self):
-        assert not self.map.is_move_possible((1, 2))
+        assert not self.mappy.is_move_possible((1, 2))
 
     def test_is_move_possible_true(self):
-        assert self.map.is_move_possible((0, 1))
+        assert self.mappy.is_move_possible((0, 1))
 
     def test_hide(self):
-        self.map.hide((1, 2))
+        self.mappy.hide((1, 2))
         # this was a Wall
-        assert self.map.is_move_possible((1, 2))
+        assert self.mappy.is_move_possible((1, 2))
 
     def test_is_move_possible_out(self):
-        assert not self.map.is_move_possible((15, 5))
+        assert not self.mappy.is_move_possible((15, 5))
 
     def test_move(self):
-        self.map.move("M", (0, 2), (0, 1))
+        self.mappy.move("M", (0, 2), (0, 1))

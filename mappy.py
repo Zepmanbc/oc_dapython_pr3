@@ -7,16 +7,16 @@ import os
 from random import choice
 
 
-class Map:
-    """Generate the map object."""
+class Mappy:
+    """Generate the mappy object."""
 
     def __init__(self):
-        """Init the map object."""
+        """Init the mappy object."""
         # Read the map file
-        self.map = list()
+        self.mappy = list()
         f = open("map", "r")
         for line in f:
-            self.map.append(line[:-1])
+            self.mappy.append(line[:-1])
         # creation position for every items
         self.macgyver = self._get_position("M")
         self.guardian = self._get_position("G")
@@ -26,7 +26,7 @@ class Map:
         self.tube = self._random_position("T")
 
     def _get_position(self, ref_tile):
-        """Read each coordinates of self.map to get the tile coordinates.
+        """Read each coordinates of self.mappy to get the tile coordinates.
 
         Args:
             ref_tile (str): a letter for each sprite
@@ -36,7 +36,7 @@ class Map:
 
         """
         x_coord, y_coord = 0, 0
-        for line in self.map:
+        for line in self.mappy:
             for tile in line:
                 if tile == ref_tile:
                     return (x_coord, y_coord)
@@ -46,30 +46,30 @@ class Map:
         return False
 
     def _set_position(self, tile, position):
-        """Modify the tile at position in self.map.
+        """Modify the tile at position in self.mappy.
         
         Args:
             tile (str): sprite letter.
             position (tuple): (X, y) coordinates.
         """
         (x_coord, y_coord) = position
-        row = list(self.map[y_coord])
+        row = list(self.mappy[y_coord])
         row[x_coord] = tile
-        self.map[y_coord] = "".join(row)
+        self.mappy[y_coord] = "".join(row)
 
     def _get_tile(self, position):
-        """Return tile type at coordinates in self.map.
+        """Return tile type at coordinates in self.mappy.
         
         Args:
             position (tuple): (x, y) coordinates.
         """
         (x_coord, y_coord) = position
-        return self.map[y_coord][x_coord]
+        return self.mappy[y_coord][x_coord]
 
     def _random_position(self, tile):
-        """Return a free (floor) random position in self.map.
+        """Return a free (floor) random position in self.mappy.
         
-        Set the item letter in map
+        Set the item letter in mappy
         
         Args:
             tile (str): sprite letter.
@@ -128,14 +128,14 @@ class Map:
             self.macgyver = new_pos
 
 # if __name__ == "__main__":
-#     map = Map()
-#     print(map.map)
-#     print(map.macgyver)
-#     print(map.guardian)
-#     print(map.exit)
-#     print(map.needle)
-#     print(map.ether)
+#     mappy = Mappy()
+#     print(mappy.mappy)
+#     print(mappy.macgyver)
+#     print(mappy.guardian)
+#     print(mappy.exit)
+#     print(mappy.needle)
+#     print(mappy.ether)
 
 #     map.move("M", (0, 2), (0, 1))
-#     print(map.map)
-#     print(map.macgyver)
+#     print(mappy.mappy)
+#     print(mappy.macgyver)

@@ -11,7 +11,7 @@ from spritesheet import Spritesheet
 class Display:
     """This module display the GUI.
 
-    It generate the positions and refresh on the screen
+    It generate the positions and refresh the screen
 
     Exemple:
         screen = Display(window, map)

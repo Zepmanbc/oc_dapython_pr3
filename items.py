@@ -13,9 +13,9 @@ class Angus:
         "RIGHT": (1, 0)
     }
 
-    def __init__(self, map):
+    def __init__(self, mappy):
         """Set variables of position and inventory."""
-        self.map = map
+        self.mappy = mappy
         self.tile = "M"
         self.ether = False
         self.needle = False
@@ -27,13 +27,13 @@ class Angus:
         Args:
             direction (str): name the direction ["UP, "DOWN", "LEFT", "RIGHT"]
         """
-        # self.map = map
-        origin = self.map.macgyver
+        # self.mappy = mappy
+        origin = self.mappy.macgyver
         change = self.MOVES[direction]
         # addition of the 2 tuples
         new_position = tuple([sum(x) for x in zip(*[origin, change])])
-        if self.map.is_move_possible(new_position):
-            self.map.move(self.tile, self.map.macgyver, new_position)
+        if self.mappy.is_move_possible(new_position):
+            self.mappy.move(self.tile, self.mappy.macgyver, new_position)
 
     def is_inventory_full(self):
         """Return True if MacGyver have all items."""

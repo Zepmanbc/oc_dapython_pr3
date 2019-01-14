@@ -5,7 +5,7 @@ import pygame
 
 from spritesheet import Spritesheet
 from gui import Display
-from map import Map
+from mappy import Mappy
 
 
 class Test_gui():
@@ -18,17 +18,17 @@ class Test_gui():
 
     def test_display(self):
         window = pygame.display.set_mode((300, 300))
-        map = Map()
-        screen = Display(window, map.map)
+        mappy = Mappy()
+        screen = Display(window, mappy.mappy)
 
     def test_stop_win(self):
         window = pygame.display.set_mode((300, 300))
-        map = Map()
-        screen = Display(window, map.map)
+        mappy = Mappy()
+        screen = Display(window, mappy.mappy)
         screen.message = "WIN"
 
     def test_stop_loose(self):
         window = pygame.display.set_mode((300, 300))
-        map = Map()
-        screen = Display(window, map.map)
+        mappy = Mappy()
+        screen = Display(window, mappy.mappy)
         screen.message = "LOOSE"
