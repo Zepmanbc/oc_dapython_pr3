@@ -1,11 +1,13 @@
-"""Class that generate the map and get the position of each items."""
 #! /usr/bin/env python3
 # coding: utf-8
+
+"""Class that generate the map and get the position of each items."""
+
 import os
 from random import choice
 
 
-class Map():
+class Map:
     """Generate the map object."""
 
     def __init__(self):

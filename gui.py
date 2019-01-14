@@ -1,12 +1,14 @@
-"""Display class of the MacGyver Maze."""
-
 #! /usr/bin/env python3
 # coding: utf-8
+
+"""Display class of the MacGyver Maze."""
+
 import pygame
+import os
 from spritesheet import Spritesheet
 
 
-class Display():
+class Display:
     """This module display the GUI.
 
     It generate the positions and refresh on the screen
@@ -21,17 +23,17 @@ class Display():
     """
 
     STEP = 20
-    TILES = "ressource/floor-tiles-20x20.png"
+    TILES = os.path.join("ressource", "floor-tiles-20x20.png")
     FLOOR = (1 * STEP, 0 * STEP, STEP, STEP)
     WALL = (12 * STEP, 5 * STEP, STEP, STEP)
     EXIT = (8 * STEP, 1 * STEP, STEP, STEP)
-    MACGYVER = "ressource/MacGyver.png"
-    GUARDIAN = "ressource/Gardien.png"
-    NEEDLE = "ressource/seringue.png"
-    ETHER = "ressource/ether.png"
-    WIN = "ressource/win.png"
-    LOOSE = "ressource/loose.png"
-    INSTRUCTIONS = "ressource/instructions.png"
+    MACGYVER = os.path.join("ressource", "MacGyver.png")
+    GUARDIAN = os.path.join("ressource", "Gardien.png")
+    NEEDLE = os.path.join("ressource", "seringue.png")
+    ETHER = os.path.join("ressource", "ether.png")
+    WIN = os.path.join("ressource", "win.png")
+    LOOSE = os.path.join("ressource", "loose.png")
+    INSTRUCTIONS = os.path.join("ressource", "instructions.png")
 
     def __init__(self, window, map):
         """Set the variables and run the first refresh."""
@@ -87,10 +89,10 @@ class Display():
 
     def _init_pictures(self):
         """Load every picture in a variable."""
-        ss = Spritesheet(self.TILES)
-        self.wall = ss.image_at(self.WALL)
-        self.floor = ss.image_at(self.FLOOR)
-        self.exit = ss.image_at(self.EXIT)
+        _ss = Spritesheet(self.TILES)
+        self.wall = _ss.image_at(self.WALL)
+        self.floor = _ss.image_at(self.FLOOR)
+        self.exit = _ss.image_at(self.EXIT)
         self.macgyver = self._resize_pic(self.MACGYVER)
         self.guardian = self._resize_pic(self.GUARDIAN)
         self.needle = self._resize_pic(self.NEEDLE)

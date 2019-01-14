@@ -1,10 +1,9 @@
-"""Angus class contains the MacGyver's position and inventory."""
-
 #! /usr/bin/env python3
 # coding: utf-8
 
+"""Angus class contains the MacGyver's position and inventory."""
 
-class Angus():
+class Angus:
     """Get MacGyver's position from the map object and set the invetory."""
 
     MOVES = {
