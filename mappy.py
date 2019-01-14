@@ -3,7 +3,6 @@
 
 """Class that generate the map and get the position of each items."""
 
-import os
 from random import choice
 
 
@@ -14,8 +13,8 @@ class Mappy:
         """Init the mappy object."""
         # Read the map file
         self.mappy = list()
-        f = open("map", "r")
-        for line in f:
+        _file = open("map", "r")
+        for line in _file:
             self.mappy.append(line[:-1])
         # creation position for every items
         self.macgyver = self._get_position("M")
@@ -47,7 +46,7 @@ class Mappy:
 
     def _set_position(self, tile, position):
         """Modify the tile at position in self.mappy.
-        
+
         Args:
             tile (str): sprite letter.
             position (tuple): (X, y) coordinates.
@@ -59,7 +58,7 @@ class Mappy:
 
     def _get_tile(self, position):
         """Return tile type at coordinates in self.mappy.
-        
+
         Args:
             position (tuple): (x, y) coordinates.
         """
@@ -68,15 +67,15 @@ class Mappy:
 
     def _random_position(self, tile):
         """Return a free (floor) random position in self.mappy.
-        
+
         Set the item letter in mappy
-        
+
         Args:
             tile (str): sprite letter.
-        
+
         Returns:
             position (tuple): (x, y) coordinates.
-        
+
         """
         random_list = [x for x in range(0, 15)]
         while 1:
@@ -88,13 +87,13 @@ class Mappy:
 
     def is_move_possible(self, new_position):
         """Test if the move is ok.
-        
+
         Args:
             new_position (tuple): (x, y) coordinates
 
         Returns:
             boolean
-            
+
         """
         (x_coord, y_coord) = new_position
         # Verify if not out of screen
@@ -108,7 +107,7 @@ class Mappy:
 
     def hide(self, position):
         """Set the position as a floor tile.
-        
+
         Args:
             position (tuple): (x, y) coordinates
         """
@@ -116,7 +115,7 @@ class Mappy:
 
     def move(self, tile, last_pos, new_pos):
         """Hide previous position and set the tile to new position.
-        
+
         Args:
             tile (str): a letter that define the kind of sprite
             las_pos (tuple): (x, y) coordinates (current)

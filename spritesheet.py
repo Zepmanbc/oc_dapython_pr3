@@ -10,7 +10,7 @@ Note: When calling images_at the rect is the format:
 import pygame
 
 
-class Spritesheet(object):
+class Spritesheet:
     """Class the create sprites from a sprite sheet."""
 
     def __init__(self, filename):

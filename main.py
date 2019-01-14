@@ -32,7 +32,7 @@ def main():
                 if event.key == 113:  # Q
                     loop = False
                 if play:
-                    screen.message = False  # delete instruction messages
+                    screen.message = False  # delete instruction messages on first move
                     if event.key == K_DOWN:
                         macgyver.move("DOWN")
                     if event.key == K_UP:

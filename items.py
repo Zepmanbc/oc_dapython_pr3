@@ -36,11 +36,8 @@ class Angus:
             self.mappy.move(self.tile, self.mappy.macgyver, new_position)
 
     def is_inventory_full(self):
-        """Return True if MacGyver have all items."""
-        if (self.ether and self.needle and self.tube):
-            return True
-        else:
-            return False
+        """Return True if MacGyver got all items."""
+        return bool(self.ether and self.needle and self.tube)
 
 if __name__ == "__main__":
     pass

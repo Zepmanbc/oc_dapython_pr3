@@ -3,8 +3,10 @@
 
 """Display class of the MacGyver Maze."""
 
-import pygame
 import os
+
+import pygame
+
 from spritesheet import Spritesheet
 
 
@@ -43,7 +45,6 @@ class Display:
         self.mappy = mappy
         self.message = "INSTRUCTIONS"
         self.refresh_screen()
-        
 
     def refresh_screen(self):
         """Read the mappy and set every tile in the window."""
@@ -74,7 +75,7 @@ class Display:
         if self.message:
             self._display_message()
         pygame.display.flip()
-    
+
     def _display_message(self):
         """Display an image on the screen.
 
