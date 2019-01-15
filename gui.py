@@ -47,7 +47,6 @@ class Display:
         pygame.time.Clock().tick(30)
         self.window = pygame.display.set_mode((300, 320))
         self.message = "INSTRUCTIONS"
-
         self._init_pictures()
 
         self.refresh_screen()
@@ -64,12 +63,12 @@ class Display:
             'E': self.ether,
             'T': self.tube
         }
-        x_coord, y_coord = 0, 0
         # refresh screen with a black background
         pygame.draw.rect(self.window,
                          pygame.Color('#000000'),
                          (0, 0, 300, 320))
         # for line in mappy:
+        x_coord, y_coord = 0, 0
         for line in self.mappy.mappy:
             for tile in line:
                 # put a floor tile under every tile to use transparency tiles
@@ -124,9 +123,12 @@ class Display:
     def _text_items(self):
         """Display the number of items in inventory_count at the botton of the screen."""
         inventory_count = 0
-        if not self.mappy.ether: inventory_count += 1
-        if not self.mappy.needle: inventory_count += 1
-        if not self.mappy.tube: inventory_count += 1
+        if not self.mappy.ether:
+            inventory_count += 1
+        if not self.mappy.needle:
+            inventory_count += 1
+        if not self.mappy.tube:
+            inventory_count += 1
 
         font = pygame.font.SysFont('Courier', 20)
         items_count = "Items : {}".format(inventory_count)
