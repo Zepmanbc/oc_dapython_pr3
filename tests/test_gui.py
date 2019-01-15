@@ -18,14 +18,14 @@ class Test_gui():
 
     def test_display(self):
         mappy = Mappy()
-        screen = Display(mappy.mappy)
+        screen = Display(mappy)
 
     def test_stop_win(self):
         mappy = Mappy()
-        screen = Display(mappy.mappy)
+        screen = Display(mappy)
         screen.message = "WIN"
 
     def test_stop_loose(self):
         mappy = Mappy()
-        screen = Display(mappy.mappy)
+        screen = Display(mappy)
         screen.message = "LOOSE"

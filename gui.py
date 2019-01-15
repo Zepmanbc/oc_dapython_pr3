@@ -46,8 +46,6 @@ class Display:
         pygame.display.set_caption("MacGyver vs G")
         pygame.time.Clock().tick(30)
         self.window = pygame.display.set_mode((300, 320))
-
-        self.inventory_count = 0
         self.message = "INSTRUCTIONS"
 
         self._init_pictures()
@@ -72,7 +70,7 @@ class Display:
                          pygame.Color('#000000'),
                          (0, 0, 300, 320))
         # for line in mappy:
-        for line in self.mappy:
+        for line in self.mappy.mappy:
             for tile in line:
                 # put a floor tile under every tile to use transparency tiles
                 self.window.blit(self.floor, (x_coord, y_coord))
@@ -125,8 +123,13 @@ class Display:
 
     def _text_items(self):
         """Display the number of items in inventory_count at the botton of the screen."""
+        inventory_count = 0
+        if not self.mappy.ether: inventory_count += 1
+        if not self.mappy.needle: inventory_count += 1
+        if not self.mappy.tube: inventory_count += 1
+
         font = pygame.font.SysFont('Courier', 20)
-        items_count = "Items : {}".format(self.inventory_count)
+        items_count = "Items : {}".format(inventory_count)
         text = font.render(items_count, 1, (255, 255, 255))
         self.window.blit(text, (0, 300))
 

@@ -14,7 +14,7 @@ from items import Angus
 def main():
     """Run the main part."""
     mappy = Mappy()
-    screen = Display(mappy.mappy)
+    screen = Display(mappy)
     macgyver = Angus(mappy)
 
     loop = True  # main loop
@@ -41,15 +41,12 @@ def main():
             if mappy.macgyver == mappy.ether:
                 macgyver.ether = True
                 mappy.ether = False
-                screen.inventory_count += 1
             if mappy.macgyver == mappy.needle:
                 macgyver.needle = True
                 mappy.needle = False
-                screen.inventory_count += 1
             if mappy.macgyver == mappy.tube:
                 macgyver.tube = True
                 mappy.tube = False
-                screen.inventory_count += 1
             if mappy.macgyver == mappy.guardian:
                 # test if inventory is full
                 if not macgyver.is_inventory_full():
