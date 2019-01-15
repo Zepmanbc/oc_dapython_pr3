@@ -13,13 +13,8 @@ from items import Angus
 
 def main():
     """Run the main part."""
-    window = pygame.display.set_mode((300, 300))
-    pygame.display.set_caption("MacGyver vs G")
-    pygame.time.Clock().tick(30)
     mappy = Mappy()
-    screen = Display(window, mappy.mappy)
-
-    # create player objet
+    screen = Display(mappy.mappy)
     macgyver = Angus(mappy)
 
     loop = True  # main loop
@@ -45,10 +40,16 @@ def main():
             # compare items' position to MacGyver's
             if mappy.macgyver == mappy.ether:
                 macgyver.ether = True
+                mappy.ether = False
+                screen.inventory_count += 1
             if mappy.macgyver == mappy.needle:
                 macgyver.needle = True
+                mappy.needle = False
+                screen.inventory_count += 1
             if mappy.macgyver == mappy.tube:
                 macgyver.tube = True
+                mappy.tube = False
+                screen.inventory_count += 1
             if mappy.macgyver == mappy.guardian:
                 # test if inventory is full
                 if not macgyver.is_inventory_full():

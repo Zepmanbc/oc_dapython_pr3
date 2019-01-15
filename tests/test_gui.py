@@ -17,18 +17,15 @@ class Test_gui():
         pass
 
     def test_display(self):
-        window = pygame.display.set_mode((300, 300))
         mappy = Mappy()
-        screen = Display(window, mappy.mappy)
+        screen = Display(mappy.mappy)
 
     def test_stop_win(self):
-        window = pygame.display.set_mode((300, 300))
         mappy = Mappy()
-        screen = Display(window, mappy.mappy)
+        screen = Display(mappy.mappy)
         screen.message = "WIN"
 
     def test_stop_loose(self):
-        window = pygame.display.set_mode((300, 300))
         mappy = Mappy()
-        screen = Display(window, mappy.mappy)
+        screen = Display(mappy.mappy)
         screen.message = "LOOSE"

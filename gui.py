@@ -38,12 +38,20 @@ class Display:
     LOOSE = os.path.join("ressource", "loose.png")
     INSTRUCTIONS = os.path.join("ressource", "instructions.png")
 
-    def __init__(self, window, mappy):
+    def __init__(self, mappy):
         """Set the variables and run the first refresh."""
-        self.window = window
-        self._init_pictures()
         self.mappy = mappy
+
+        pygame.init()
+        pygame.display.set_caption("MacGyver vs G")
+        pygame.time.Clock().tick(30)
+        self.window = pygame.display.set_mode((300, 320))
+
+        self.inventory_count = 0
         self.message = "INSTRUCTIONS"
+
+        self._init_pictures()
+
         self.refresh_screen()
 
     def refresh_screen(self):
@@ -59,6 +67,10 @@ class Display:
             'T': self.tube
         }
         x_coord, y_coord = 0, 0
+        # refresh screen with a black background
+        pygame.draw.rect(self.window,
+                         pygame.Color('#000000'),
+                         (0, 0, 300, 320))
         # for line in mappy:
         for line in self.mappy:
             for tile in line:
@@ -72,23 +84,13 @@ class Display:
                 x_coord += self.STEP
             x_coord = 0
             y_coord += self.STEP
+        # Display a message at the center of the screen
         if self.message:
             self._display_message()
+        # Display number of items owned
+        self._text_items()
         pygame.display.flip()
 
-    def _display_message(self):
-        """Display an image on the screen.
-
-        if self.message is not False set the image corresponding to value
-        """
-        if self.message == "WIN":
-            message_pic = self.WIN
-        elif self.message == "LOOSE":
-            message_pic = self.LOOSE
-        elif self.message == "INSTRUCTIONS":
-            message_pic = self.INSTRUCTIONS
-        pic = pygame.image.load(message_pic)
-        self.window.blit(pic, (0, 0))
 
     def _init_pictures(self):
         """Load every picture in a variable."""
@@ -105,9 +107,28 @@ class Display:
     def _resize_pic(self, path):
         """Resize a picture to the tile size."""
         pic = pygame.image.load(path)
-        pic.set_alpha(128)  # for keeping transparency
         return pygame.transform.scale(pic, (self.STEP, self.STEP))
 
+    def _display_message(self):
+        """Display an image on the screen.
+
+        if self.message is not False set the image corresponding to value
+        """
+        if self.message == "WIN":
+            message_pic = self.WIN
+        elif self.message == "LOOSE":
+            message_pic = self.LOOSE
+        elif self.message == "INSTRUCTIONS":
+            message_pic = self.INSTRUCTIONS
+        pic = pygame.image.load(message_pic)
+        self.window.blit(pic, (0, 0))
+
+    def _text_items(self):
+        """Display the number of items in inventory_count at the botton of the screen."""
+        font = pygame.font.SysFont('Courier', 20)
+        items_count = "Items : {}".format(self.inventory_count)
+        text = font.render(items_count, 1, (255, 255, 255))
+        self.window.blit(text, (0, 300))
 
 # if __name__ == "__main__":
 #     window = pygame.display.set_mode((300, 300))
