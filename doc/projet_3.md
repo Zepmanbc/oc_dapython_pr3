@@ -64,24 +64,24 @@ Je vais faire une fonction qui lit le fichier *map* et remplis un tableau à 2 d
 
 Ce tableau sera mis à jour en fonction des événements et permettra de rafraichir l'affichage.
 
-je vais gérer MacGyver, le garde et les diférents éléments en tant qu'objets.
+je vais gérer MacGyver, le garde et les différents éléments en tant qu'objets.
 
 * MacGyver : il aura une position, une liste d'objets possédés ou pas.
 
-* le Garde : il a une position et un status d'affichage.
+* le Garde : il a une position et un statuts  d'affichage.
 
-* les éléments à récupérer : ils ont une position qui doit être définie aléatoirement sur les cases de chemin, ils ont un status d'affichage si ils ont été récupérés.
+* les éléments à récupérer : ils ont une position qui doit être définie aléatoirement sur les cases de chemin, ils ont un statuts  d'affichage si ils ont été récupérés.
 
 * la sortie : elle a une position.
 
-il y a des caractéristiques qui se répètent comme la position et le status d'affichage, je peut essayer de créer une class commune et hériter de cette classe pour faire MacGyver auquel je rajouterai une methode de déplacement (redéfinir la position).
+il y a des caractéristiques qui se répètent comme la position et le statuts  d'affichage, je peut essayer de créer une class commune et hériter de cette classe pour faire MacGyver auquel je rajouterai une méthode de déplacement (redéfinir la position).
 
 Le positionnement aléatoire sera géré en dehors de l'objet.
 
-la position du garde, de la sortie et la position initiale de MacGyvers sont définies dans *map* il faut donc que je récupére les coordonnées lors de la lecture du fichier map. Les objets concernés devront avoir été créé avant.
+La position du garde, de la sortie et la position initiale de MacGyvers sont définies dans *map* il faut donc que je récupère les coordonnées lors de la lecture du fichier map. Les objets concernés devront avoir été créé avant.
 
 donc pour résumer:
-1. création de la fenétre
+1. création de la fenêtre
 2. création des objets avec la définition de leur image
 4. lecture de *map* pour le remplissage du tableau de 15×15
 5. attribution des positions aux objets positionnés par *map*
@@ -90,7 +90,7 @@ donc pour résumer:
     * lecture des events de déplacement de MacGyver
     * vérification si le mouvement est possible
     * mise à jour de la position
-    * si position commune avec un élément alors mise á jour de l'inventaire et du status d'affichage
+    * si position commune avec un élément alors mise á jour de l'inventaire et du statuts d'affichage
     * si position commune avec le garde, vérification de l'inventaire, soit afficher un message perdu, soit faire disparaitre le garde
     * si position commune avec la sortie, afficher le message de victoire
 
@@ -98,21 +98,21 @@ je vais utiliser le fichier floor-tiles-20x20.png pour faire le décor
 
 ![floor-tiles-20x20.png](floor-tiles-20x20.png)
 
-ma fenêtre fera donc 15 × 20 = 300 px de côtés
+ma fenêtre fera donc 15 × 20 = 300 px de côtés (je vais devoir rajouter plus tard 20px en hauteur pour compter les items)
 
 Je vais devoir utiliser la méthode [SpriteSheet](https://www.pygame.org/wiki/Spritesheet) pour utiliser cette ressource
 
 ![etape1](etape1_window.png)
 
-je créé une classe **Mappy** pour gerer le tableau. Elle lit le fichier *map* et permet de manipuler les éléments du tableau du même nom (cacher et déplacer des élements)
+je créé une classe **Mappy** pour gerer le tableau. Elle lit le fichier *map* et permet de manipuler les éléments du tableau Mappy.mappy (cacher et déplacer des éléments)
 
 ![avec les items](items.png)
 
-le classe **Display** sert a afficher les éléments graphiques. Elle contient les constantes avec les images sélectionnées. Il y a 2 types de ressources, les images simples qu'il faut redimensionner et les sprites où il faut selectionner juste une partie d'une image plus grande.
+le classe **Display** sert à afficher les éléments graphiques. Elle contient les constantes avec les images sélectionnées. Il y a 2 types de ressources, les images simples qu'il faut redimensionner et les sprites où il faut sélectionner juste une partie d'une image plus grande. J'ai rajouté après coup le compteur d'inventaire.
 
 la classe **Angus** gère l'inventaire de MacGyver et le déplacement dans *map*
 
-Le programme principal fait une loop et surveille les appuis des touches pour déplacer MacGyver. Il y a des tests pour vérifier la récupération des objets et les règles du jeu
+Le programme principal fait une loop et surveille les appuis des touches pour déplacer MacGyver. Il y a des tests pour vérifier la récupération des objets et les règles du jeu.
 
 ![c'est gagné](win.png)
 ![c'est perdu](loose.png)

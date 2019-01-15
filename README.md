@@ -34,7 +34,7 @@ if you want to try:
 
 ## How to play
 
-![THE game](doc/items.png)
+![THE game](doc/present.png)
 
 Use arrow keys to move MacGyver
 
