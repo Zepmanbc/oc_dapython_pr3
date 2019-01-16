@@ -40,13 +40,13 @@ def main():
             # compare items' position to MacGyver's
             if mappy.macgyver == mappy.ether:
                 macgyver.ether = True
-                mappy.ether = False
+                mappy.ether = None
             if mappy.macgyver == mappy.needle:
                 macgyver.needle = True
-                mappy.needle = False
+                mappy.needle = None
             if mappy.macgyver == mappy.tube:
                 macgyver.tube = True
-                mappy.tube = False
+                mappy.tube = None
             if mappy.macgyver == mappy.guardian:
                 # test if inventory is full
                 if not macgyver.is_inventory_full():
