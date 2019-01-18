@@ -20,7 +20,8 @@ class Display:
 
     Attributes:
         window is a pygame.display object
-        map is an object that contains a list of the maze map and the position of items
+        map is an object that contains a list of the maze map
+        and the position of items
 
     """
 
@@ -88,7 +89,6 @@ class Display:
         self._text_items()
         pygame.display.flip()
 
-
     def _init_pictures(self):
         """Load every picture in a variable."""
         _ss = Spritesheet(self.TILES)
@@ -121,7 +121,8 @@ class Display:
         self.window.blit(pic, (0, 0))
 
     def _text_items(self):
-        """Display the number of items in inventory_count at the botton of the screen."""
+        """Display the number of items in inventory_count
+        at the botton of the screen."""
         inventory_count = 0
         if not self.mappy.ether:
             inventory_count += 1

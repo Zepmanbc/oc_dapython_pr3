@@ -126,6 +126,7 @@ class Mappy:
         if tile == "M":
             self.macgyver = new_pos
 
+
 # if __name__ == "__main__":
 #     mappy = Mappy()
 #     print(mappy.mappy)

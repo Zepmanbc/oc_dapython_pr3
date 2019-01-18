@@ -3,6 +3,7 @@
 
 """Angus class contains the MacGyver's position and inventory."""
 
+
 class Angus:
     """Get MacGyver's position from the map object and set the invetory."""
 
@@ -38,6 +39,7 @@ class Angus:
     def is_inventory_full(self):
         """Return True if MacGyver got all items."""
         return bool(self.ether and self.needle and self.tube)
+
 
 if __name__ == "__main__":
     pass
